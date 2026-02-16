@@ -1,9 +1,9 @@
 import FilterDropdown from "./FilterDropdown";
 
-const GENRE_OPTIONS = ["All Genres", "Drama", "Fantasy"];
+const GENRE_OPTIONS = ["All Genres", "Drama", "Fantasy", "Horror", "Action"];
 const RATING_OPTIONS = ["All", "Drama", "Fantasy"];
 
-export default function Header({searchedMovie, setSearchedMovie}) {
+export default function Header({searchedMovie, setSearchedMovie, selectedGenre, setSelectedGenre}) {
     return (
         <header>
             <div className="nav-container">
@@ -16,7 +16,7 @@ export default function Header({searchedMovie, setSearchedMovie}) {
                 </form>
             </div>
             <div className="filters">
-                <FilterDropdown filterName={"Genre"} options={GENRE_OPTIONS}/>
+                <FilterDropdown filterName={"Genre"} options={GENRE_OPTIONS} selectedGenre={selectedGenre} setSelectedGenre={setSelectedGenre}/>
                 <FilterDropdown filterName={"Rating"} options={RATING_OPTIONS}/>
             </div>
         </header>

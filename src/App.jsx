@@ -5,13 +5,18 @@ import { useState } from "react"
 
 function App() {
   const [searchedMovie, setSearchedMovie] = useState('');
-  const filteredMovies = moviesData.filter((movie) =>
-    movie.title.toLowerCase().includes(searchedMovie.toLowerCase())
-  );
+  const [selectedGenre, setSelectedGenre] = useState('All Genres')
+
+  const filteredMovies = moviesData.filter((movie) => {
+    const matchesName = movie.title.toLowerCase().includes(searchedMovie.toLowerCase())
+    const matchesGenre = selectedGenre === "All Genres" || selectedGenre.toLowerCase() === movie.genre;
+    
+    return matchesName && matchesGenre;
+  });
 
   return (
     <>
-      <Header searchedMovie={searchedMovie} setSearchedMovie={setSearchedMovie}/>
+      <Header searchedMovie={searchedMovie} setSearchedMovie={setSearchedMovie} selectedGenre={selectedGenre} setSelectedGenre={setSelectedGenre}/>
       <main className="main-content"> 
         <div className="movie-grid">
           {filteredMovies.map((movie) => (
