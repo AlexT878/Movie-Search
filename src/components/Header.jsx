@@ -17,7 +17,7 @@ export default function Header() {
             </div>
             <div className="filters">
                 <FilterDropdown filterName={"Genre"} options={GENRE_OPTIONS}/>
-                <FilterDropdown filterName={"Rating"} options={GENRE_OPTIONS}/>
+                <FilterDropdown filterName={"Rating"} options={RATING_OPTIONS}/>
             </div>
         </header>
     )
