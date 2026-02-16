@@ -3,7 +3,7 @@ import FilterDropdown from "./FilterDropdown";
 const GENRE_OPTIONS = ["All Genres", "Drama", "Fantasy"];
 const RATING_OPTIONS = ["All", "Drama", "Fantasy"];
 
-export default function Header() {
+export default function Header({searchedMovie, setSearchedMovie}) {
     return (
         <header>
             <div className="nav-container">
@@ -12,7 +12,7 @@ export default function Header() {
             </div>
             <div className="search-container">
                 <form>
-                    <input type="text" placeholder="Search..." className="search-input"/>
+                    <input type="text" placeholder="Search..." className="search-input" value={searchedMovie} onChange={(event) => setSearchedMovie(event.target.value)}/>
                 </form>
             </div>
             <div className="filters">

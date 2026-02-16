@@ -5,7 +5,7 @@ export default function MovieCard( {movie} ) {
                 <img src={movie.image} alt={movie.title} className="movie-image" />
             </div>
             <div className="card-content">
-                <span class="movie-title">{movie.title}</span>
+                <span className="movie-title">{movie.title}</span>
                 <div className="card-info">
                     <span className="genre-label">{movie.genre}</span>
                     <span className={`rating-badge ${movie.rating >= 8 ? 'high' : 'mid'}`}> {movie.rating} </span>
