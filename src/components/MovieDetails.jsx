@@ -8,7 +8,7 @@ export default function MovieDetails() {
     const movie = moviesData.find((m) => m.id === parseInt(id));
 
     return (
-        <div class="details-container">
+        <div className="details-container">
             <MovieCard movie={movie} className="movie-card-details"/>
             <Link to="/" className="back-button">
                 Back to main page

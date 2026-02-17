@@ -11,7 +11,7 @@ export default function Header({searchedMovie, setSearchedMovie, selectedGenre, 
                 <button className="nav-btn">Watchlist</button>
             </div>
             <div className="search-container">
-                <form>
+                <form onSubmit={(e) => e.preventDefault()}>
                     <input type="text" placeholder="Search..." className="search-input" value={searchedMovie} onChange={(event) => setSearchedMovie(event.target.value)}/>
                 </form>
             </div>

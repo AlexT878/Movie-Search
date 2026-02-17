@@ -1,4 +1,4 @@
-import Header from "./components/Header"
+import MainLayout from "./components/MainLayout";
 import moviesData from "./assets/movies.json"
 import MovieCard from "./components/MovieCard.JSX"
 import MovieDetails from "./components/MovieDetails"
@@ -49,31 +49,31 @@ function App() {
     setSearchParams(nextParams);
   }
 
-  return (
-    <>
-      <Header 
-        searchedMovie={searchedMovie} 
-        setSearchedMovie={(val) => updateURL({ search: val })} 
-        selectedGenre={selectedGenre} 
-        setSelectedGenre={(val) => updateURL({ genre: val })}
-        selectedSortOption={selectedSortOption}
-        setSelectedSortOption={(val) => updateURL({ sort:val })}
-      />
-      <main className="main-content">
-        <Routes>
-          <Route path="/" element={
-            <div className="movie-grid">
-              {sortedMovies.map((movie) => (
-                <MovieCard key={movie.id} movie={movie} className="card-link"/>
-              ))}
-            </div>
-          }/>
+  
 
-          <Route path="/movies/:id" element={<MovieDetails />}/>
-        </Routes> 
-      </main>
-    </>
-  )
+  return (
+    <Routes>
+      <Route element={
+        <MainLayout 
+          searchedMovie={searchedMovie}
+          setSearchedMovie={(val) => updateURL({ search: val })}
+          selectedGenre={selectedGenre}
+          setSelectedGenre={(val) => updateURL({ genre: val })}
+          selectedSortOption={selectedSortOption}
+          setSelectedSortOption={(val) => updateURL({ sort: val })}
+        />
+      }>
+        
+        <Route path="/" element={
+          <div className="movie-grid">
+            {sortedMovies.map(movie => <MovieCard key={movie.id} movie={movie} className={"card-link"}/>)}
+          </div>
+        }/>
+        <Route path="/movies/:id" element={<MovieDetails />}/>
+        
+      </Route>
+    </Routes>
+  );
 }
 
 export default App
