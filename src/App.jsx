@@ -1,7 +1,10 @@
 import Header from "./components/Header"
 import moviesData from "./assets/movies.json"
 import MovieCard from "./components/MovieCard.JSX"
+import MovieDetails from "./components/MovieDetails"
+
 import { useState } from "react"
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   const [searchedMovie, setSearchedMovie] = useState('');
@@ -34,12 +37,18 @@ function App() {
         selectedSortOption={selectedSortOption}
         setSelectedSortOption={setSelectedSortOption}
       />
-      <main className="main-content"> 
-        <div className="movie-grid">
-          {sortedMovies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))}
-        </div>
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={
+            <div className="movie-grid">
+              {sortedMovies.map((movie) => (
+                <MovieCard key={movie.id} movie={movie} className="card-link"/>
+              ))}
+            </div>
+          }/>
+
+          <Route path="/movies/:id" element={<MovieDetails />}/>
+        </Routes> 
       </main>
     </>
   )
