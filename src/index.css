@@ -24,22 +24,28 @@ header {
 
 .nav-btn {
   background-color: #ffffff;
-  color: #000;
-  border: none;
+  color: #000000;
+  border: 1px solid #ffffff;
   padding: 12px 30px;
   border-radius: 50px; 
   cursor: pointer;
   font-size: 15px;
   font-weight: 600;
-  letter-spacing: 0.5px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .nav-btn:hover {
-  transform: translateY(-3px);
-  background-color: #e0e0e0;
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+.nav-btn.active {
+  background-color: #ffffff;
+  border: 1px solid #ffffff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+  transform: scale(1.08);
 }
 
 .search-container {

@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import FilterDropdown from "./FilterDropdown";
 
 const GENRE_OPTIONS = ["All Genres", "Drama", "Fantasy", "Horror", "Action"];
@@ -7,8 +8,12 @@ export default function Header({searchedMovie, setSearchedMovie, selectedGenre, 
     return (
         <header>
             <div className="nav-container">
-                <button className="nav-btn">Home</button>
-                <button className="nav-btn">Watchlist</button>
+                <NavLink to="/" className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}>
+                    Home
+                </NavLink>
+                <NavLink to="/watchlist" className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}>
+                    Watchlist
+                </NavLink>
             </div>
             <div className="search-container">
                 <form onSubmit={(e) => e.preventDefault()}>

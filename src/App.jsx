@@ -4,6 +4,7 @@ import MovieCard from "./components/MovieCard.JSX"
 import MovieDetails from "./components/MovieDetails"
 
 import { Route, Routes, useSearchParams } from "react-router-dom";
+import WatchList from "./components/WatchList";
 
 function App() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -70,8 +71,11 @@ function App() {
           </div>
         }/>
         <Route path="/movies/:id" element={<MovieDetails />}/>
+
+        <Route path="/watchlist" element={<WatchList />} />
         
       </Route>
+
     </Routes>
   );
 }
