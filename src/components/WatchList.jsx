@@ -1,5 +1,17 @@
-export default function WatchList() {
+import MovieCard from "./MovieCard";
+
+export default function WatchList({ watchlist, addToWatchlist }) {
     return (
-        <h1>Coming soon...</h1>
-    )
+        <div className="movie-grid">
+            {watchlist.map(movie => (
+                <MovieCard 
+                    key={movie.id} 
+                    movie={movie} 
+                    className="card-link" 
+                    addToWatchlist={() => addToWatchlist(movie)}
+                    isWatchListed={true} 
+                />
+            ))}
+        </div>
+    );
 }

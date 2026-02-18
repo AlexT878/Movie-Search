@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-export default function MovieCard( {movie, className} ) {
+export default function MovieCard( {movie, className, addToWatchlist, isWatchListed} ) {
     return (
         <Link to={`/movies/${movie.id}`} className={className}>
             <div className="movie-card">
@@ -13,7 +13,9 @@ export default function MovieCard( {movie, className} ) {
                         <span className="genre-label">{movie.genre}</span>
                         <span className={`rating-badge ${movie.rating >= 8 ? 'high' : 'mid'}`}> {movie.rating} </span>
                     </div>
-                    <button className="add-watchlist-btn"> Add to Watchlist </button>
+                    <button className="add-watchlist-btn" onClick={(e) => {e.preventDefault(); e.stopPropagation(); addToWatchlist(); }}> 
+                        {isWatchListed ? "Remove from Watchlist" : "Add to Watchlist"}
+                    </button>
                 </div>
             </div>
         </Link>
