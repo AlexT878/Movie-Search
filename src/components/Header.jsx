@@ -1,8 +1,6 @@
 import { NavLink, useSearchParams } from "react-router-dom";
 import FilterDropdown from "./FilterDropdown";
-
-const GENRE_OPTIONS = ["All Genres", "Drama", "Fantasy", "Horror", "Action"];
-const SORT_OPTIONS = ["Alphabetical: A-Z", "Alphabetical: Z-A", "Rating: High to Low", "Rating: Low to High"];
+import { GENRE_OPTIONS, SORT_OPTIONS, MESSAGES } from "../constants/strings";
 
 export default function Header() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -29,20 +27,36 @@ export default function Header() {
         <header>
             <div className="nav-container">
                 <NavLink to="/" className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}>
-                    Home
+                    {MESSAGES.HOME}
                 </NavLink>
                 <NavLink to="/watchlist" className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}>
-                    Watchlist
+                    {MESSAGES.WATCHLIST}
                 </NavLink>
             </div>
             <div className="search-container">
                 <form onSubmit={(e) => e.preventDefault()}>
-                    <input type="text" placeholder="Search..." className="search-input" value={searchedMovie} onChange={(event) => updateURL({ search: event.target.value })}/>
+                    <input 
+                        type="text" 
+                        placeholder="Search..." 
+                        className="search-input" 
+                        value={searchedMovie} 
+                        onChange={(event) => updateURL({ search: event.target.value })}
+                    />
                 </form>
             </div>
             <div className="filters">
-                <FilterDropdown filterName={"Genre"} options={GENRE_OPTIONS} selectedOption={selectedGenre} setSelectedOption={(val) => updateURL({ genre: val })}/>
-                <FilterDropdown filterName={"Sort"} options={SORT_OPTIONS} selectedOption={selectedSortOption} setSelectedOption={(val) => updateURL({ sort: val })}/>
+                <FilterDropdown 
+                    filterName={"Genre"} 
+                    options={GENRE_OPTIONS} 
+                    selectedOption={selectedGenre} 
+                    setSelectedOption={(val) => updateURL({ genre: val })}
+                />
+                <FilterDropdown 
+                    filterName={"Sort"} 
+                    options={SORT_OPTIONS} 
+                    selectedOption={selectedSortOption} 
+                    setSelectedOption={(val) => updateURL({ sort: val })}
+                />
             </div>
         </header>
     )

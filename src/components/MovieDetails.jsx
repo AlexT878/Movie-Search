@@ -1,13 +1,15 @@
 import { Link, useParams } from "react-router-dom"
 import moviesData from "../assets/movies.json"
 import MovieCard from "./MovieCard";
+import { MESSAGES } from "../constants/strings";
 
 export default function MovieDetails() {
     const { id } = useParams();
-
     const movie = moviesData.find((m) => m.id === parseInt(id));
+
+    // Early return
     if (!movie) {
-        return <div>Movie not found! <Link to="/" className="back-button">Go back</Link></div>;
+        return <div>{MESSAGES.NOT_FOUND}<Link to="/" className="back-button">{MESSAGES.GO_BACK}</Link></div>;
     }
 
     return (
@@ -17,7 +19,7 @@ export default function MovieDetails() {
                 className="movie-card-details" 
                 />
             <Link to="/" className="back-button">
-                Back to main page
+                {MESSAGES.BACK_MAIN}
             </Link>
         </div>
     )
