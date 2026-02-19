@@ -1,24 +1,10 @@
 import Header from "./Header.jsx"
 import { Outlet } from "react-router-dom";
 
-export default function MainLayout({ 
-  searchedMovie, 
-  setSearchedMovie, 
-  selectedGenre, 
-  setSelectedGenre, 
-  selectedSortOption, 
-  setSelectedSortOption 
-}) {
+export default function MainLayout() {
   return (
     <>
-      <Header 
-        searchedMovie={searchedMovie} 
-        setSearchedMovie={setSearchedMovie} 
-        selectedGenre={selectedGenre} 
-        setSelectedGenre={setSelectedGenre}
-        selectedSortOption={selectedSortOption}
-        setSelectedSortOption={setSelectedSortOption}
-      />
+      <Header />
       <main className="main-content">
         <Outlet />
       </main>

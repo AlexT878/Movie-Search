@@ -3,6 +3,11 @@ import { useMemo } from "react";
 export default function useMovies(moviesData, search, genre, sort) {
     const sortedMovies = useMemo(() => {
         const filteredMovies = moviesData.filter((movie) => {
+            if (!movie || !movie.id || !movie.title) {
+                console.log("Invalid movie received: ", movie);
+                return false;
+            }
+
             const matchesName = movie.title.toLowerCase().includes(search.toLowerCase())
             const matchesGenre = genre === "All Genres" || genre.toLowerCase() === movie.genre;
         

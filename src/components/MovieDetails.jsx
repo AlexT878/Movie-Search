@@ -6,6 +6,9 @@ export default function MovieDetails() {
     const { id } = useParams();
 
     const movie = moviesData.find((m) => m.id === parseInt(id));
+    if (!movie) {
+        return <div>Movie not found! <Link to="/" className="back-button">Go back</Link></div>;
+    }
 
     return (
         <div className="details-container">

@@ -1,8 +1,29 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+function loadWatchListFromStorage() {
+    try {
+        const data = localStorage.getItem('my-watchlist');
+        if (data === null) {
+            console.log("Local storage is empty!");
+            return [];
+        }
+
+        const parsedData = JSON.parse(data);
+        if(!Array.isArray(parsedData)) {
+            console.log("Watchlist is not an array!");
+            return [];
+        }
+
+        return parsedData;
+    } catch (err) {
+        console.log(err);
+        return [];
+    }
+}
+
 const watchlistSlice = createSlice({
   name: 'watchlist',
-  initialState: JSON.parse(localStorage.getItem('my-watchlist')) || [],
+  initialState: loadWatchListFromStorage,
   reducers: {
     toggleWatchlist: (state, action) => {
       const movie = action.payload;
