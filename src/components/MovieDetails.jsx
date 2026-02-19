@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom"
 import moviesData from "../assets/movies.json"
 import MovieCard from "./MovieCard";
 
-export default function MovieDetails({ addToWatchlist, watchlist }) {
+export default function MovieDetails() {
     const { id } = useParams();
 
     const movie = moviesData.find((m) => m.id === parseInt(id));
@@ -12,8 +12,6 @@ export default function MovieDetails({ addToWatchlist, watchlist }) {
             <MovieCard 
                 movie={movie} 
                 className="movie-card-details" 
-                addToWatchlist={() => addToWatchlist(movie)}
-                isWatchListed={watchlist.some(item => item.id === movie.id)}
                 />
             <Link to="/" className="back-button">
                 Back to main page

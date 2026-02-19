@@ -1,6 +1,9 @@
+import { useSelector } from "react-redux";
 import MovieCard from "./MovieCard";
 
-export default function WatchList({ watchlist, addToWatchlist }) {
+export default function WatchList() {
+    const watchlist = useSelector((state) => state.watchlist);
+
     return (
         <div className="movie-grid">
             {watchlist.map(movie => (
@@ -8,8 +11,6 @@ export default function WatchList({ watchlist, addToWatchlist }) {
                     key={movie.id} 
                     movie={movie} 
                     className="card-link" 
-                    addToWatchlist={() => addToWatchlist(movie)}
-                    isWatchListed={true} 
                 />
             ))}
         </div>
