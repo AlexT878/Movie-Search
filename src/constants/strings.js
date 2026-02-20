@@ -1,4 +1,5 @@
 export const MESSAGES = {
+    LOADING: "Loading...",
     NOT_FOUND: "Movie not found!",
     GO_BACK: "Go back",
     BACK_MAIN: "Back to main page",

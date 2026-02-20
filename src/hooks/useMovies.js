@@ -9,7 +9,7 @@ export default function useMovies(moviesData, search, genre, sort) {
             }
 
             const matchesName = movie.title.toLowerCase().includes(search.toLowerCase())
-            const matchesGenre = genre === "All Genres" || genre.toLowerCase() === movie.genre;
+            const matchesGenre = genre === "All Genres" || genre.toLowerCase() === movie.genre.toLowerCase();
         
             return matchesName && matchesGenre;
         });
